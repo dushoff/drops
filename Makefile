@@ -1,13 +1,26 @@
-## This is drops
+## This is the screendir drops
+## See makestuff/listdir.md
 
 current: target
 -include target.mk
-Ignore = target.mk
 
-# -include makestuff/perl.def
+-include makestuff/perl.def
 
-vim_session:
-	bash -cl "vmt"
+######################################################################
+
+vim_session: 
+	bash -cl "vmt screens.list"
+
+screen_session: screens.update
+	$(MAKE) $(vscreens)
+
+######################################################################
+
+## Linking
+
+Dropbox Downloads: dir=~
+Dropbox Downloads:
+	$(linkdir)
 
 ######################################################################
 
@@ -17,16 +30,21 @@ Sources += Makefile
 
 Ignore += makestuff
 msrepo = https://github.com/dushoff
+Makefile: makestuff/Makefile
+makestuff/Makefile:
+	git clone $(msrepo)/makestuff
+	ls $@
 
-Makefile: makestuff/00.stamp
-makestuff/%.stamp:
-	- $(RM) makestuff/*.stamp
-	(cd makestuff && $(MAKE) pull) || git clone --depth 1 $(msrepo)/makestuff
-	touch $@
+### Includes
 
 -include makestuff/os.mk
 
-## -include makestuff/pipeR.mk
+## -include makestuff/wrapR.mk
+
+-include makestuff/listdir.mk
+-include makestuff/screendir.mk
+-include makestuff/mkfiles.mk
 
 -include makestuff/git.mk
 -include makestuff/visual.mk
+
