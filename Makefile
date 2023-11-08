@@ -35,11 +35,7 @@ makestuff/Makefile:
 	git clone $(msrepo)/makestuff
 	ls $@
 
-### Includes
-
 -include makestuff/os.mk
-
-## -include makestuff/wrapR.mk
 
 -include makestuff/listdir.mk
 -include makestuff/screendir.mk
