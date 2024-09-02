@@ -5,4 +5,4 @@ XX. Downloads
 
 XX. Dropbox/money
 
-XX. Dropbox/money/pcard.vscreen
+XX. Dropbox/money/pcard
